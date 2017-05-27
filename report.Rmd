@@ -144,17 +144,27 @@ Again, we will load the relevnt packages and data:
 ```{r}
 # install.packages('Rfacebook')
 library('Rfacebook')
-
-fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnYSSbY8juZBsZBdoavJEW5zDIPh3ZClKkEZAhx0tfjm84sKonC4iZAyiYyVynuvVyjZBVExH548e0xBOK2kZCN6AgMitZCuyeZAT1UZCDkDU1kDfKkF7iZBaWF5d"
-
-fb_network <- getNetwork(fb_token, format="adj.matrix")
-singletons <- rowSums(fb_network)==0
-fb_network <- fb_network[!singletons,!singletons]
-
-# write.csv(fb_network, "sources/fb_network.csv")
 ```
 
-Note: the token for Facebook API is temporary, so we wrote the data on an attached file, called sources/fb_network.csv, and saved the results.
+Note: the token for Facebook API is temporary, so we wrote the data on an attached file, called sources/fb_network.csv.
+The next code is for getting the data from Facebook, and we put it in comments since the tolken is probably not abailable anymore.
+
+```{r}
+fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnYSSbY8juZBsZBdoavJEW5zDIPh3ZClKkEZAhx0tfjm84sKonC4iZAyiYyVynuvVyjZBVExH548e0xBOK2kZCN6AgMitZCuyeZAT1UZCDkDU1kDfKkF7iZBaWF5d"
+
+# fb_network <- getNetwork(fb_token, format="adj.matrix")
+# singletons <- rowSums(fb_network)==0
+# fb_network <- fb_network[!singletons,!singletons]
+
+# write.csv(fb_network, "sources/fb_network.csv")
+
+# fb_graph <- graph.adjacency(fb_network)
+# V(fb_graph)$size = degree(fb_graph) * 2
+# plot(fb_graph,edge.arrow.size=0)
+
+```
+
+We made a csv file with the data from Facebook, and we load it:
 
 ```{r}
 fb_network <- read.csv("sources/fb_network.csv")
@@ -162,9 +172,6 @@ fb_graph <- graph.data.frame(fb_network, directed = F)
 V(fb_graph)$size = degree(fb_graph) * 2
 plot(fb_graph)
 
-# fb_graph <- graph.adjacency(fb_network)
-# V(fb_graph)$size = degree(fb_graph) * 2
-# plot(fb_graph,edge.arrow.size=0)
 ```
 
 We got a graph with the relationships of our friends on facebook:
@@ -238,7 +245,7 @@ plot(fb_graph, vertex.color=fb_edge_betweenness_com$membership, edge.arrow.size=
 sizes(fb_edge_betweenness_com)
 ```
 
-Answer: there are 5 communities, with the sizes: 2, 2, 6, 2, 2. (see the image above).
+Answer: there are 5 communities, with the sizes: 2, 6, 2, 2, 2. (see the image above).
 
 ![image](/images/fb_edge_betweenness_size_modularity.PNG)
 
