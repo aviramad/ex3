@@ -150,6 +150,9 @@ library('Rfacebook')
 Note: the token for Facebook API is temporary, so we wrote the data on an attached file, called sources/fb_network.csv.
 The next code is for getting the data from Facebook, and we put it in comments since the tolken is probably not abailable anymore.
 
+We used the method "getNetwork" which returns all of our members on Facebook and the relationships between them.
+Also, we removed all the "single" members (members that doesn't have any relationship between any other member).
+
 ```{r}
 fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnYSSbY8juZBsZBdoavJEW5zDIPh3ZClKkEZAhx0tfjm84sKonC4iZAyiYyVynuvVyjZBVExH548e0xBOK2kZCN6AgMitZCuyeZAT1UZCDkDU1kDfKkF7iZBaWF5d"
 
@@ -165,7 +168,8 @@ fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnY
 
 ```
 
-We made a csv file with the data from Facebook, and we load it:
+We made a csv file with the data from Facebook, and we load it.
+the relations between the member is friendship on Facebook (two members have a connection iff they are friends on Facebook)
 
 ```{r}
 fb_network <- read.csv("sources/fb_network.csv")
