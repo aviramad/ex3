@@ -171,6 +171,7 @@ We made a csv file with the data from Facebook, and we load it:
 fb_network <- read.csv("sources/fb_network.csv")
 fb_graph <- graph.data.frame(fb_network, directed = F)
 V(fb_graph)$size = degree(fb_graph) * 2
+fb_graph <- simplify(fb_graph)
 plot(fb_graph)
 
 ```
@@ -227,7 +228,6 @@ Answer: Barak Yaari
 Deviding the vertexs to communities following the algorithm:
 
 ```{r}
-fb_graph <- simplify(fb_graph)
 fb_fastgreedy_com <- fastgreedy.community(fb_graph)
 ```
 
