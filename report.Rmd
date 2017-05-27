@@ -63,12 +63,12 @@ Answer: karev
 
 ### part b:
 
-### Algorithm "Edge Betweenness"
+### Algorithm fastGreedy (Clauset-Newman-Moore algorithm)
 
 Deviding the vertexs to communities following the algorithm:
 
 ```{r}
-edge_betweenness_com <- edge.betweenness.community(ga_graph)
+fastgreedy_com <- fastgreedy.community(ga_graph)
 ```
 
 #### i.
@@ -76,28 +76,29 @@ edge_betweenness_com <- edge.betweenness.community(ga_graph)
 Creating a graph:
 
 ```{r}
-plot(ga_graph, vertex.color=edge_betweenness_com$membership)
+plot(ga_graph, vertex.color=fastgreedy_com$membership)
 ```
 
-![image](/images/ga_edge_betweenness_graph.png)
+![image](/images/ga_fastgreedy_graph.png)
 
 #### ii.
 
 ```{r}
-sizes(edge_betweenness_com)
+sizes(fastgreedy_com)
 ```
 
-Answer: there are 7 communities, with the sizes: 8, 5, 4, 4, 5, 3, 3. (see the image above).
+Answer: there are 6 communities, with the sizes: 10, 5, 4, 5, 5, 3. (see the image above).
+
+![image](/images/ga_fastgreedy_size_modularity.PNG)
 
 #### iii.
 
 ```{r}
-modularity(edge_betweenness_com)
+modularity(fastgreedy_com)
 ```
 
-Answer: modularity = 0.5774221 (see the image above).
+Answer: modularity = 0.5774221
 
-![image](/images/ga_edge_betweenness_size_modularity.PNG)
 
 ### Algorithm "Walktrap"
 
@@ -221,12 +222,13 @@ Answer: Barak Yaari
 
 ### part b:
 
-### Algorithm "Edge Betweenness"
+### Algorithm fastGreedy (Clauset-Newman-Moore algorithm)
 
 Deviding the vertexs to communities following the algorithm:
 
 ```{r}
-fb_edge_betweenness_com <- edge.betweenness.community(fb_graph)
+fb_graph <- simplify(fb_graph)
+fb_fastgreedy_com <- fastgreedy.community(fb_graph)
 ```
 
 #### i.
@@ -234,28 +236,28 @@ fb_edge_betweenness_com <- edge.betweenness.community(fb_graph)
 Creating a graph:
 
 ```{r}
-plot(fb_graph, vertex.color=fb_edge_betweenness_com$membership, edge.arrow.size=0)
+plot(fb_graph, vertex.color=fb_fastgreedy_com$membership, edge.arrow.size=0)
 ```
 
-![image](/images/fb_edge_betweeness_graph.png)
+![image](/images/fb_fastgreedy_graph.png)
 
 #### ii.
 
 ```{r}
-sizes(fb_edge_betweenness_com)
+sizes(fb_fastgreedy_com)
 ```
 
-Answer: there are 5 communities, with the sizes: 2, 6, 2, 2, 2. (see the image above).
+Answer: there are 4 communities, with the sizes: 5, 5, 2, 2. (see the image above).
 
-![image](/images/fb_edge_betweenness_size_modularity.PNG)
+![image](/images/fb_fastgreedy_size_modularity.PNG)
 
 #### iii.
 
 ```{r}
-modularity(fb_edge_betweenness_com)
+modularity(fastgreedy_com)
 ```
 
-Answer: modularity = 0.2314267
+Answer: modularity = 0.5947232
 
 ### Algorithm "Walktrap"
 
@@ -291,4 +293,4 @@ Answer: there are 4 communities, with the sizes: 2, 8, 2, 2. (see the image abov
 modularity(fb_walktrap_com)
 ```
 
-Answer: modularity = 0.2235371 
+Answer: modularity = 0.25875 
