@@ -146,6 +146,7 @@ Again, we will load the relevnt packages and data:
 library('Rfacebook')
 
 fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnYSSbY8juZBsZBdoavJEW5zDIPh3ZClKkEZAhx0tfjm84sKonC4iZAyiYyVynuvVyjZBVExH548e0xBOK2kZCN6AgMitZCuyeZAT1UZCDkDU1kDfKkF7iZBaWF5d"
+
 fb_network <- getNetwork(fb_token, format="adj.matrix")
 singletons <- rowSums(fb_network)==0
 fb_network <- fb_network[!singletons,!singletons]
@@ -156,10 +157,14 @@ fb_network <- fb_network[!singletons,!singletons]
 Note: the token for Facebook API is temporary, so we wrote the data on an attached file, called sources/fb_network.csv, and saved the results.
 
 ```{r}
-
-fb_graph <- graph.adjacency(fb_network)
+fb_network <- read.csv("sources/fb_network.csv")
+fb_graph <- graph.data.frame(fb_network, directed = F)
 V(fb_graph)$size = degree(fb_graph) * 2
-plot(fb_graph,edge.arrow.size=0)
+plot(fb_graph)
+
+# fb_graph <- graph.adjacency(fb_network)
+# V(fb_graph)$size = degree(fb_graph) * 2
+# plot(fb_graph,edge.arrow.size=0)
 ```
 
 We got a graph with the relationships of our friends on facebook:
@@ -235,15 +240,15 @@ sizes(fb_edge_betweenness_com)
 
 Answer: there are 5 communities, with the sizes: 2, 2, 6, 2, 2. (see the image above).
 
+![image](/images/fb_edge_betweenness_size_modularity.PNG)
+
 #### iii.
 
 ```{r}
 modularity(fb_edge_betweenness_com)
 ```
 
-Answer: modularity = 0.26125 (see the image above).
-
-![image](/images/fb_edge_betweenness_size_modularity.PNG)
+Answer: modularity = 0.2314267
 
 ### Algorithm "Walktrap"
 
@@ -271,12 +276,12 @@ sizes(fb_walktrap_com)
 
 Answer: there are 4 communities, with the sizes: 2, 8, 2, 2. (see the image above).
 
+![image](/images/fb_walktrap_size_modularity.PNG)
+
 #### iii.
 
 ```{r}
 modularity(fb_walktrap_com)
 ```
 
-Answer: modularity = 0.25875 (see the image above).
-
-![image](/images/fb_walktrap_size_modularity.PNG)
+Answer: modularity = 0.2235371 
