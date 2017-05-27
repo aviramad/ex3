@@ -18,7 +18,7 @@ plot(ga_graph)
 ```
 We got a graph with the relationships of the characters in Gray Anatomi:
 
-![image](/images/ga_edge_betweenness_graph.png)
+![image](/images/ga_graph.png)
 
 ### part a:
 
@@ -31,7 +31,7 @@ betweenness
 V(ga_graph)[max_betweenness]
 ```
 
-![image](/images/ga_betweenness.png)
+![image](/images/ga_betweenness.PNG)
 
 Answer: sloan
 
@@ -44,7 +44,7 @@ closeness
 V(ga_graph)[max_closeness]
 ```
 
-![image](/images/ga_closeness.png)
+![image](/images/ga_closeness.PNG)
 
 Answer: torres
 
@@ -57,7 +57,7 @@ max_evcent <- as.numeric(which(max(evcent) == evcent))
 V(ga_graph)[max_evcent]
 ```
 
-![image](/images/ga_evcent.png)
+![image](/images/ga_evcent.PNG)
 
 Answer: karev
 
@@ -97,7 +97,7 @@ modularity(edge_betweenness_com)
 
 Answer: modularity = 0.5774221 (see the image above).
 
-![image](/images/ga_edge_betweenness_size_modularity.png)
+![image](/images/ga_edge_betweenness_size_modularity.PNG)
 
 ### Algorithm "Walktrap"
 
@@ -133,7 +133,7 @@ modularity(walktrap_com)
 
 Answer: modularity = 0.5147059 (see the image above).
 
-![image](/images/ga_walktrap_size_modularity.png)
+![image](/images/ga_walktrap_size_modularity.PNG)
 
 ---
 
@@ -162,7 +162,7 @@ V(fb_graph)$size = degree(fb_graph) * 2
 plot(fb_graph,edge.arrow.size=0)
 ```
 
-![image](/images/gb_edge_betweenness_graph.png)
+![image](/images/fb_graph.png)
 
 ### part a:
 
@@ -175,7 +175,7 @@ max_fb_betweenness <- as.numeric(which(max(fb_betweenness) == fb_betweenness))
 V(fb_graph)[max_fb_betweenness]
 ```
 
-![image](/images/fb_betweenness.png)
+![image](/images/fb_betweenness.PNG)
 
 Answer: Barak Yaari
 
@@ -188,7 +188,7 @@ max_fb_closeness <- as.numeric(which(max(fb_closeness) == fb_closeness))
 V(fb_graph)[max_fb_closeness]
 ```
 
-![image](/images/fb_closeness.png)
+![image](/images/fb_closeness.PNG)
 
 Answer: Barak Yaari
 
@@ -201,7 +201,7 @@ max_fb_evcent <- as.numeric(which(max(fb_evcent) == fb_evcent))
 V(fb_graph)[max_fb_evcent]
 ```
 
-![image](/images/fb_evcent.png)
+![image](/images/fb_evcent.PNG)
 
 Answer: Barak Yaari
 
@@ -223,7 +223,7 @@ Creating a graph:
 plot(fb_graph, vertex.color=fb_edge_betweenness_com$membership)
 ```
 
-![image](/images/fb_edge_betweenness_graph.png)
+![image](/images/fb_edge_betweeness_graph.png)
 
 #### ii.
 
@@ -241,7 +241,7 @@ modularity(fb_edge_betweenness_com)
 
 Answer: modularity = 0.26125 (see the image above).
 
-![image](/images/fb_edge_betweenness_size_modularity.png)
+![image](/images/fb_edge_betweenness_size_modularity.PNG)
 
 ### Algorithm "Walktrap"
 
@@ -277,4 +277,4 @@ modularity(fb_walktrap_com)
 
 Answer: modularity = 0.25875 (see the image above).
 
-![image](/images/fb_walktrap_size_modularity.png)
+![image](/images/fb_walktrap_size_modularity.PNG)
