@@ -152,7 +152,6 @@ fb_network <- getNetwork(fb_token, format="edgelist")
 ```
 
 Note: the token for Facebook API is temporary, so we wrote the data on a file so we can use it whenever we want.
-We got a graph with the relationships of our friends on facebook:
 
 ```{r}
 fb_network <- read.csv("sources/fb_network.csv")
@@ -161,6 +160,8 @@ fb_graph <- graph.adjacency(fb_network)
 V(fb_graph)$size = degree(fb_graph) * 2
 plot(fb_graph,edge.arrow.size=0)
 ```
+
+We got a graph with the relationships of our friends on facebook:
 
 ![image](/images/fb_graph.png)
 
@@ -220,7 +221,7 @@ fb_edge_betweenness_com <- edge.betweenness.community(fb_graph)
 Creating a graph:
 
 ```{r}
-plot(fb_graph, vertex.color=fb_edge_betweenness_com$membership)
+plot(fb_graph, vertex.color=fb_edge_betweenness_com$membership, edge.arrow.size=0)
 ```
 
 ![image](/images/fb_edge_betweeness_graph.png)
@@ -256,7 +257,7 @@ fb_walktrap_com <- walktrap.community(fb_graph)
 Creating a graph:
 
 ```{r}
-plot(fb_graph, vertex.color=fb_walktrap_com$membership)
+plot(fb_graph, vertex.color=fb_walktrap_com$membership, edge.arrow.size=0)
 ```
 
 ![image](/images/fb_walktrap_graph.png)
