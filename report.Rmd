@@ -169,7 +169,6 @@ fb_token = "EAACEdEose0cBADdzf40ZAJPO3gwSkPor5NBAB7mvAbh56LkvbISyjIj2DExEfZCFtnY
 ```
 
 We made a csv file with the data from Facebook, and we load it.
-the relations between the member is friendship on Facebook (two members have a connection iff they are friends on Facebook)
 
 ```{r}
 fb_network <- read.csv("sources/fb_network.csv")
@@ -183,6 +182,9 @@ plot(fb_graph)
 We got a graph with the relationships of our friends on facebook:
 
 ![image](/images/fb_graph.png)
+
+each member is a vertex in the graph.
+the connections between the members is friendship on Facebook (two members have a connection (edge) iff they are friends on Facebook).
 
 ### part a:
 
